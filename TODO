@@ -1,0 +1,93 @@
+* check conversions and etc, build with
+make CFLAGS="-pedantic -Werror -W -Wall -Wconversion -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wstrict-prototypes"
+
+
+Convergence checking in rk2imp/rk4imp
+-------------------------------------
+
+* https://savannah.gnu.org/bugs/?30540
+
+
+Fixed step size control
+-----------------------
+
+* https://savannah.gnu.org/bugs/?30947
+
+
+from GSL TODO
+-------------
+
+* Implement other stepping methods from well-known packages such as RKSUITE,
+  VODE, DASSL, etc.
+  https://computation.llnl.gov/casc/sundials/main.html (matlab)
+* Roundoff error needs to be taken into account to prevent the step-size being
+  made arbitrarily small.
+* Add a higher level interface which accepts a start point, end point, result
+  array (size N,  y0, y1, y2 ... ,y(N-1)) desired relative and absolute errors
+  epsrel and epsabs.
+  It should have its own workspace which is a wrapper around the existing
+  workspaces.
+
+
+Implement Octave solvers
+------------------------
+
+http://www.mathworks.com/access/helpdesk/help/techdoc/ref/ode23tb.html
+
+--->8-----
+[T,Y] = solver(odefun,tspan,y0) with tspan = [t0 tf] integrates the
+   system of differential equations from time t0 to tf with initial
+   conditions y0. odefun is a function handle. See Function Handles in
+   the MATLAB Programming documentation for more information. Function
+   f = odefun(t,y), for a scalar t and a column vector y, must return
+   a column vector f corresponding to . Each row in the solution array
+   Y corresponds to a time returned in column vector T. To obtain
+   solutions at the specific times t0, t1,...,tf (all increasing or
+   all decreasing), use tspan = [t0,t1,...,tf].
+----->8-----
+
+http://octave.1599824.n4.nabble.com/A-few-Octave-ideas-td2242143.html#a2244572
+http://octave.1599824.n4.nabble.com/ode45-gives-solution-in-the-quot-Dark-Side-quot-but-not-in-Octave-td1637429.html#a1637433
+
+
+Document matlab functions
+-------------------------
+
+Example:
+% -*- texinfo -*-
+% @deftypefn {Function File} {@var{y} =} euler (@var{f}, @var{t}, @var{y0})
+% Explicit Euler integrator.
+% @end deftypefn
+% @seealso{ODE}
+
+
+Convergence of partioned_rkstep() for H=K(p)+V(q)
+-------------------------------------------------
+
+>> more on; verlet(@ode_pendulum,linspace(0,4 * pi),[0,2])(end,:)
+ans =  2.8493
+ans =  0.16780
+ans =  0.0076155
+ans = 0
+n =  4
+...
+
+
+Misc
+----
+
+* документирование odextra (C и matlab)
+* откомментировать свойства всех сольверов (БД?)
+* обрабатывать случай расходимости для solver_solve (return NaN?)
+* расширенное тестирование (поправить тесты из GSL)
+* названия: ceulers, rattle...
+* dense output, events
+  http://lists.gnu.org/archive/html/help-gsl/2010-06/msg00021.html
+  http://math.colgate.edu/~wweckesser/research/summer2005/
+  файл gnimatlab/gnievents.m
+* векторизация, odefile (matlab)
+* более общие случаи: связи, каземиры, DAE, DDE, BVP:
+  http://www.mail-archive.com/help-gsl@gnu.org/msg02449.html
+* симпл. RK для систем с гол. связями
+* эффекты нач. условий для неявных RK
+* интеграция с python: scipynumpy & sympy

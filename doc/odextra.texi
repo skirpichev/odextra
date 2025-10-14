@@ -1,0 +1,147 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename odextra.info
+@settitle ODEXTRA extensions to the GNU Scientific Library
+@finalout
+
+@dircategory Scientific software
+@direntry
+* odextra: (odextra).                   ODEXTRA extensions to GSL
+@end direntry
+
+@c define our special TeX math macros
+@c @include mathinclude.texi
+@c @include version-ref.texi
+@set UPDATED 15 Oct 2011
+@set EDITION 1
+@set VERSION 1
+
+@iftex
+@copying
+Copyright @copyright{} 2009-2011 Sergey B Kirpichev.
+
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.3; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license
+is included in the section entitled "GNU Free Documentation License".
+@end copying
+@end iftex
+
+@titlepage
+@title ODEXTRA
+@subtitle ODE extensions to the GNU Scientific Library
+@subtitle Version @value{VERSION}
+@subtitle @value{UPDATED}
+
+@author Sergey B Kirpichev
+@email{skirpichev@@gmail.com}
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top, Introduction, (dir), (dir)
+@top ODEXTRA
+
+This file documents ODEXTRA, a collection of ODE integrators for the
+GNU Scientific Library (GSL).
+
+Information about GSL can be found at the project homepage,
+@uref{http://www.gnu.org/software/gsl/}.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License.
+@end ifnottex
+
+@menu
+* Introduction::
+* Functions::
+* Examples::
+* References and Further Reading::
+* GNU Free Documentation License::
+* Function Index::
+* Variable Index::
+* Type Index::
+* Concept Index::
+@end menu
+
+@node  Introduction, Functions, Top, Top
+@chapter Introduction
+
+Library functions are declared in the header file @file{odextra.h}.
+
+@node Functions, Examples, Introduction, Top
+@chapter Functions
+
+@section Stepping Functions
+
+Error estimation is carried out by the step doubling method.
+
+@deffn {Step Type} odeiv2_step_midpoint
+Implicit Gaussian second order Runge-Kutta.  Also known as implicit
+mid-point rule.  Symmetric and symplectic method.
+@end deffn
+
+@deffn {Step Type} odeiv2_step_gauss
+Implicit Gaussian 4th order Runge-Kutta.  Also known as the
+Hammer-Hollingsworth method (symmetric and symplectic).
+@end deffn
+
+@node Examples, References and Further Reading, Functions, Top
+@chapter Examples
+
+The following program solves the Henon-Heiles problem
+
+@example
+@verbatiminclude example.c
+@end example
+
+@node References and Further Reading, GNU Free Documentation License, Examples, Top
+@chapter References and Further Reading
+
+@itemize @asis{}
+@item
+Hairer, E., Lubich, C., Wanner, G., @cite{Geometric Numerical
+Integration.  Structure-Preserving Algorithms for Ordinary
+Differential Equations}, Springer, Berlin, 2006.
+@end itemize
+
+@itemize @asis{}
+@item
+Hairer, E., Norsett, S. P., Wanner, G., @cite{Solving Ordinary Differential
+Equations I: Nonstiff Problems}, Springer, Berlin, 1993.
+@end itemize
+
+@itemize @asis{}
+@item
+Hairer, E., Wanner, G., @cite{Solving Ordinary Differential
+Equations II: Stiff and Differential-Algebraic Problems},
+Springer, Berlin, 1996.
+@end itemize
+
+@node GNU Free Documentation License, Function Index, References and Further Reading, Top
+@unnumbered GNU Free Documentation License
+@include fdl.texi
+
+@node Function Index, Variable Index, GNU Free Documentation License, Top
+@unnumbered Function Index
+
+@printindex fn
+
+@node Variable Index, Type Index, Function Index, Top
+@unnumbered Variable Index
+
+@printindex vr
+
+@node Type Index, Concept Index, Variable Index, Top
+@unnumbered Type Index
+
+@printindex tp
+
+@node Concept Index,  , Type Index, Top
+@unnumbered Concept Index
+
+@printindex cp
+@bye

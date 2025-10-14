@@ -1,0 +1,22 @@
+Assumptions for symplectic solvers
+==================================
+
+y = [p, q]
+
+y' = f(y) = [-dH/dq, +dH/dp]
+
+n = dim(y)/2
+
+y[0] = p[0] ...
+.
+.
+y[n] = q[0] ...
+...
+
+
+f[0] = -dH/dy[n] ...
+.
+.
+f[n] = +dH/dy[0] ...
+...
+

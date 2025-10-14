@@ -1,0 +1,9 @@
+SUBDIRS = doc tests
+
+lib_LTLIBRARIES = libodextra.la
+libodextra_la_SOURCES = euler.c verlet.c rk2imp.c rk4imp.c rkstep.c \
+						ivp/control.c ivp/cscal.c ivp/cstd.c \
+						ivp/evolve.c ivp/step.c
+
+pkginclude_HEADERS = odextra.h
+noinst_HEADERS = odeiv_util.h

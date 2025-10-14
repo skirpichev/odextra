@@ -1,0 +1,7 @@
+TESTS = $(check_PROGRAMS)
+
+check_PROGRAMS = test
+test_SOURCES = test.c linear.c pendulum.c kepler.c henon.c toda.c vortex.c fermi.c
+test_LDADD = ../libodextra.la
+
+noinst_HEADERS = odextra_test.h
